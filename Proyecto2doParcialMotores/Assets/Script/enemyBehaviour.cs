@@ -79,6 +79,7 @@ public class enemyBehaviour : MonoBehaviour
 
         if (cooling)
         {
+            Cooldown();
             anim.SetBool("Attack", false);
         }
     }
@@ -103,11 +104,21 @@ public class enemyBehaviour : MonoBehaviour
         anim.SetBool("Attack", true);
     }
 
+    void Cooldown()
+    {
+        timer -= Time.deltaTime;
+
+        if(timer<=0 && cooling && attackMode)
+        {
+            cooling = false;
+            timer = intTimer;
+        }
+    }
     void StopAttack()
     {
         cooling = false;
         attackMode = false;
-        anim.SetBool("Attack", false);
+        anim.SetBool("Attack", false); 
 
     }
 
@@ -123,5 +134,8 @@ public class enemyBehaviour : MonoBehaviour
         }
     }
 
-
+    public void TriggerCooling()
+    {
+        cooling = true;
+    }
 }
