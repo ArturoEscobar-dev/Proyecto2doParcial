@@ -37,8 +37,11 @@ public class FighterMovement : MonoBehaviour
 
         }
         if (Input.GetKeyDown(KeyCode.Space))
+        {         
             animator.SetBool("isAttack", true);
-       
+
+        }       
+
     }
 
     
@@ -67,7 +70,7 @@ public class FighterMovement : MonoBehaviour
         if (animator.GetBool("isAttack"))
             animator.SetBool("isAttack", false);
     }
-
+   
 
 
 
